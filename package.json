@@ -1,0 +1,13 @@
+{
+  "name": "quadrados-perfeitos",
+  "version": "1.0.0",
+  "description": "Retangulos quadrados perfeitos varridos: o menor retangulo que se ladrilha com quadrados todos diferentes, e quantos ladrilhamentos cada retangulo tem",
+  "type": "module",
+  "private": false,
+  "license": "MIT",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "test": "node --test testes/*.test.js",
+    "medir": "node ferramentas/medidor.js"
+  }
+}
