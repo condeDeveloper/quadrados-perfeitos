@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quadrados perfeitos — retângulos de quadrados todos diferentes</title>
+<meta name="description" content="Ret&#226;ngulos ladrilhados por quadrados, varridos por &#225;rea crescente: o menor ladrilhamento perfeito &#233; o 32x33 de ordem 9, achado depois de 618 ret&#226;ngulos. A faixa 2xn &#233; Fibonacci.">
+<link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+
+<header>
+  <h1>Quadrados perfeitos</h1>
+  <p>Cubra um retângulo inteiro com quadrados, sem sobrar e sem sobrepor. Isso é fácil: quadradinhos de lado 1 resolvem qualquer retângulo. Agora exija que <strong>todos os quadrados tenham tamanhos diferentes</strong>. Qual é o menor retângulo em que isso é possível?</p>
+</header>
+
+<main>
+
+<section>
+  <h2>Veja</h2>
+  <div class="painel">
+    <div class="linha" style="margin-bottom:16px">
+      <label for="largura">largura</label>
+      <input id="largura" type="number" min="1" max="40" value="5" style="width:70px">
+      <label for="altura">altura</label>
+      <input id="altura" type="number" min="1" max="40" value="4" style="width:70px">
+      <label><input id="soPerfeitos" type="checkbox"> só perfeitos</label>
+      <button id="varrer" type="button">Varrer</button>
+      <button id="proximo" type="button">Próximo</button>
+      <button id="classico" type="button">O 32 × 33</button>
+    </div>
+    <div id="desenho"></div>
+    <p id="texto"></p>
+  </div>
+</section>
+
+<section>
+  <h2>O que a varredura respondeu</h2>
+
+  <h3>O menor é o 32 × 33</h3>
+  <p>Varrendo os retângulos por área crescente, o primeiro que não é quadrado e tem ladrilhamento perfeito é o <strong>32 × 33</strong>, com nove quadrados de lados 1, 4, 7, 8, 9, 10, 14, 15 e 18. Foram <strong>618</strong> retângulos varridos antes dele, e a ordem da varredura é o que transforma "achei um" em "não existe menor".</p>
+  <p>A conta fecha: 1² + 4² + 7² + 8² + 9² + 10² + 14² + 15² + 18² = 1.056 = 32 × 33.</p>
+
+  <h3>Quatro ladrilhamentos, que são um só</h3>
+  <p>O 32 × 33 tem 4 ladrilhamentos perfeitos. Tirando as quatro imagens do retângulo — espelho horizontal, espelho vertical e meia-volta — sobra <strong>um</strong>. E ele é simples: nenhum pedaço dele forma um retângulo menor por conta própria.</p>
+
+  <h3>As faixas têm fórmula</h3>
+  <p>A faixa de altura 2 tem <strong>Fibonacci</strong> ladrilhamentos: 1, 2, 3, 5, 8, 13… porque o quadrado da ponta é de lado 1 ou de lado 2. A de altura 3 segue <code>a(n) = a(n−1) + 2a(n−2) + a(n−3)</code> — uma recorrência que eu li na coluna medida e escrevi antes de medir as duas linhas seguintes. As duas bateram: 2.745 e 5.896.</p>
+
+  <h3>A poda que separa termina de não termina</h3>
+  <p>No 32 × 33, cortar o ramo assim que um lado se repete fecha a busca em <strong>729.963</strong> nós. Sem esse corte, a busca passa de <strong>30 milhões</strong> de nós e não termina.</p>
+</section>
+
+<section>
+  <h2>Como rodar</h2>
+  <p>Node 20 ou mais novo. Sem dependência nenhuma.</p>
+  <pre><code>npm test
+npm run medir
+node ferramentas/medidor.js primeiro</code></pre>
+  <p>O repositório está em <a href="https://github.com/condeDeveloper/quadrados-perfeitos">github.com/condeDeveloper/quadrados-perfeitos</a>.</p>
+</section>
+
+</main>
+
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
